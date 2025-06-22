@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>北疆和伊犁景点攻略</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>') repeat;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(-50px) translateY(-50px); }
+            100% { transform: translateX(50px) translateY(50px); }
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            border-radius: 2px;
+        }
+
+        .attractions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .attraction-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e8ecf4;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .attraction-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .attraction-name {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .attraction-name::before {
+            content: '📍';
+            font-size: 1.2em;
+        }
+
+        .attraction-info {
+            display: grid;
+            gap: 12px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #5a6c7d;
+            min-width: 60px;
+            font-size: 0.9em;
+        }
+
+        .info-value {
+            flex: 1;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .price {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .price.free {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stars {
+            color: #ffd700;
+            font-size: 1.1em;
+        }
+
+        .location {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .description {
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .attractions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .section-title {
+                font-size: 1.6em;
+            }
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏔️ 北疆和伊犁景点攻略</h1>
+            <p>探索新疆最美的自然风光与人文景观</p>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">🌄 北疆景点</h2>
+                <div class="attractions-grid">
+                    <div class="attraction-card">
+                        <div class="attraction-name">阿尔山</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">兴安盟阿尔山市</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">游山玩水，欣赏大兴安岭上的自然风光</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">北疆明珠观光塔</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price">100元</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">满洲里市市区以西9公里处国门景区北侧</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">登上208米高的观光塔，远眺俄罗斯后贝加尔斯克小镇风光，俯瞰满洲里全市美景；体验顶层环塔小火车和旋转太空梭；在旋转餐厅品尝美食</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">天籁草原北疆歌舞汇</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price">待定</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">呼和浩特市乌兰察布西街内蒙古饭店附西楼3层音乐厅</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">感受内蒙文化之美，观看歌舞演出</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">布苏里北疆军事文化旅游区</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price">待定</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">呼伦贝尔鄂伦春自治旗鄂伦春布苏里旅游区</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">参观原布苏里战备军事储备基地，包括陈列馆、将军楼、地下油库和弹药库等军事题材景观；体验学生夏令营营房和食堂等休闲娱乐、教育场所</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">鄂尔多斯北疆往事年代幻城</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price">待定</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">鄂尔多斯市伊金霍洛旗伊金霍洛镇文化产业园内</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">玩乐、休闲、度假，体验历史文化氛围</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">阿尔山海神圣泉旅游度假区</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">兴安盟阿尔山市温泉街</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">享受神泉疗愈，体验北疆秘境的宁静与舒适</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">白鹿岛漂流</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">呼伦贝尔额莫尔道嘎</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">在美丽的自然风光中体验漂流的刺激与乐趣</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">中华北疆第一哨</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price">待定</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">漠河市北极村</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">感受北疆卫士的庄严与神圣，欣赏祖国最北端的独特风光</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">宁夏水洞沟旅游区</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price">60元</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">银川市灵武市临河镇水洞沟旅游区</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">观看中国首部展现西夏的大型实景马战史诗剧《北疆天歌》；游览水洞沟野性草原区、荒谷神韵、世外桃源等景点；体验三万年前古人类的生存画卷</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">🌸 伊犁景点</h2>
+                <div class="attractions-grid">
+                    <div class="attraction-card">
+                        <div class="attraction-name">那拉提景区</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price">119元</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">伊犁哈萨克自治州新源县那拉提镇那拉提旅游风景区</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">游览冬暖夏凉的空中草原，欣赏美丽的自然风光</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">八卦城</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">特克斯县阿克奇街八卦城</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">参观没有红绿灯的八卦城，感受其独特的布局和浓郁的民俗风情；欣赏厚重的历史文化和秀美的自然风光</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">喀拉峻大草原</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price">140元</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">伊犁哈萨克自治州特克斯县276乡道南</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">游览阔克苏大峡谷、西喀拉峻、东喀拉峻、中天山雪峰和天籁之林五大景区；欣赏雪山、草原、森林、河流、湖泊、峡谷等自然景观</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">解忧公主薰衣草园</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">伊犁哈萨克自治州霍城县218国道</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">参观薰衣草博物馆、薰衣草香草园和薰衣草GMP芳香车间；欣赏七彩花田、香草恋人、香草品种园等经典景点；了解薰衣草的生物特性、文化知识和加工工艺</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">琼库什台</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">伊犁特克斯县喀英德库什台村</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">欣赏蓝的天、白的云、银色的雪山、墨绿的杉林、淡青色的草原和五颜六色的花海；参观哈萨克牧民村庄，体验当地的民俗文化</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">夏塔旅游区</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">伊犁哈萨克自治州昭苏县南70多公里</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">游览夏塔峡谷，欣赏自然风景；了解古代丝绸之路的历史文化；体验乌孙国的夏都风情</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">恰西森林公园</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price">30元</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">伊犁州巩留东南部山区，距离县城78公里</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">游览塔里木景区和恰西风景区，欣赏银线瀑布、林海松涛、撞山桥等自然景观；开展休闲旅游、探险徒步、摄影、自驾、狩猎、骑马等活动</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">库尔德宁景区</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price">60元</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">伊犁市巩留县东部山区88公里处</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">游览荷苍隘口、瀑布、西天山峡谷、提克喀拉尕依林海、喀班巴依峰远眺、林海日出等景点；开展野生植物科考、森林探险、登山等活动</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">昭苏草原</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">霍城县昭苏草原</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">欣赏广袤的草场和无边的花海，感受草原的壮美</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">伊帕尔汗薰衣草观光园</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">伊犁河谷伊宁</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">欣赏由薰衣草和马鞭草组成的紫色花海；体验浪漫的氛围，拍照留念</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">唐布拉国家森林公园</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">尼勒克县克令乡</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">欣赏百里画廊的美景，呼吸新鲜空气，享受大自然的宁静与舒适</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">特克斯八卦城热气球体验</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">伊犁哈萨克自治州特克斯县特克斯镇酷热村577国道2号</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">乘坐热气球，俯瞰神奇的八卦城，许下美好的愿望</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">果子沟大桥</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">伊犁哈萨克自治州霍城县果子沟大桥</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">欣赏S型大桥蜿蜒在秀美山谷中的壮丽景色</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">伊犁老城喀赞其民俗旅游区</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">伊犁哈萨克自治州伊宁市胜利南路与新华东路交叉路口</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">参观陕西回族大寺、维吾尔风格庭院、艾兰木巴格等景点；体验少数民族的聚居区文化</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">野核桃沟景区</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price">45元</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">伊犁州巩留县伊什格力克山北坡巩留核桃林场南侧距县城直线约15公里</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">欣赏野核桃林等珍稀植物，观察陆栖脊椎动物和昆虫；了解野核桃的科研价值和生物学意义</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">阔克苏大峡谷</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">特克斯县喀拉峻游客服务中心旁</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">欣赏阔克苏河蜿蜒曲折的美景，参观壶口瀑布、九曲十八弯、鳄鱼湾等自然景观；体验峡谷草甸风光</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">阿克塔斯姑娘峰景区</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">新疆维吾尔自治区伊犁哈萨克自治州特克斯县齐勒乌泽克镇</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">欣赏负氧离子丰富的河谷草原，感受"空中花海"的美誉；开展休闲娱乐活动</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">霍尔果斯国门景区</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">伊犁哈萨克自治州霍城县</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">参观国门，感受国家边境线的重要；体验中亚异域风情表演，品尝哈萨克斯坦美食，购买吉尔吉斯坦工艺品</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">图开沙漠旅游度假区</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">伊犁霍城县图开沙漠内</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">体验卡丁车漂移、疯狂滑沙、全地形ATV、骆驼骑乘等娱乐项目；欣赏沙漠的绮丽风光</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">伊犁河风景区</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">伊犁哈萨克自治州伊宁市伊犁河路街道郊16公里313省道</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">欣赏伊犁河的宽阔河面和美丽风光；拍摄"伊桥落日"的美景</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">昭苏湿地公园景区</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">伊犁哈萨克自治州昭苏县758县道17公里处</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">观赏湿地中丰富的生物种类，包括高等植物、国家一、二级保护动物和各种鸟类</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">伊宁市六星街亚历山大手风琴博物馆</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">伊犁哈萨克自治州伊宁市</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">了解手风琴的历史和文化，欣赏手风琴展品</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">大西沟景区</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">霍城县大西沟景区</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">休闲放松，享受大自然的宁静与美丽</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">薰衣草园</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">霍城县65团8连</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">欣赏紫色花海，体验浪漫的氛围，拍照留念</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">那拉提湿地公园</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">伊犁新源洪土拜村</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">休闲娱乐，享受大自然的宁静与舒适</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">乔尔玛烈士陵园</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">尼勒克县217国道</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">缅怀先烈，了解历史文化</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">那拉提国际滑雪场</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">伊犁哈萨克自治州新源县别斯托别乡哈木斯特村</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">体验滑雪的乐趣，享受冰雪旅游的魅力</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">吐尔根杏花沟</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price">待定</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">新源县218国道附近</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">欣赏中世纪遗留的原始野杏林，感受震撼人心的美景</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="attraction-name">霍尔果斯中亚风情街</div>
+                        <div class="attraction-info">
+                            <div class="info-row">
+                                <span class="info-label">费用:</span>
+                                <span class="info-value"><span class="price free">免费</span></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">位置:</span>
+                                <span class="info-value location">伊犁哈萨克自治州霍尔果斯市兰新路与亚欧北路交汇处</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">内容:</span>
+                                <span class="info-value description">体验中亚风情，品尝美食，购买特色商品</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">推荐:</span>
+                                <span class="info-value rating">
+                                    <span class="stars">★★★★</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="scroll-top" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // 显示/隐藏回到顶部按钮
+        window.addEventListener('scroll', function() {
+            const scrollTop = document.querySelector('.scroll-top');
+            if (window.pageYOffset > 300) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        });
+
+        // 回到顶部功能
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
