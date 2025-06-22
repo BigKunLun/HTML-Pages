@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产研战略规划要素</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .strategy-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .strategy-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+
+        .strategy-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: white;
+        }
+
+        .card-1 .card-icon {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .card-2 .card-icon {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+        }
+
+        .card-3 .card-icon {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+        }
+
+        .card-4 .card-icon {
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+        }
+
+        .strategy-card h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .strategy-card p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .highlight-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .highlight-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            color: #666;
+        }
+
+        .highlight-list li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            color: white;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .strategy-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .strategy-card {
+                padding: 30px 20px;
+            }
+
+            .container {
+                padding: 20px 15px;
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header fade-in">
+            <h1>产研战略规划要素</h1>
+            <p>构建高效产研体系的四大核心要素，助力企业实现可持续发展</p>
+        </header>
+
+        <div class="strategy-grid">
+            <div class="strategy-card card-1 fade-in">
+                <div class="card-icon">🎯</div>
+                <h2>业务目标映射</h2>
+                <p>最核心的肯定是业务目标，进而明确技术支撑的关键点。</p>
+                <ul class="highlight-list">
+                    <li>开展某项新业务</li>
+                    <li>提升用户体验</li>
+                    <li>营收增长等</li>
+                    <li>搭建新系统</li>
+                    <li>打通新链路</li>
+                    <li>提升系统效果</li>
+                </ul>
+            </div>
+
+            <div class="strategy-card card-2 fade-in">
+                <div class="card-icon">🔍</div>
+                <h2>现状复盘与痛点识别</h2>
+                <p>通过历史数据、上游团队调研、内部讨论，识别核心问题。先列问题而非解决方案。</p>
+                <ul class="highlight-list">
+                    <li>交付周期波动大</li>
+                    <li>优先级不透明</li>
+                    <li>系统 BUG 多</li>
+                    <li>研发对业务了解少</li>
+                    <li>历史数据分析（交付周期、BUG、用户反馈）</li>
+                    <li>上游团队调研</li>
+                </ul>
+            </div>
+
+            <div class="strategy-card card-3 fade-in">
+                <div class="card-icon">💡</div>
+                <h2>内部机会</h2>
+                <p>挖掘现有资源的潜力，优化内部流程和技术能力。</p>
+                <ul class="highlight-list">
+                    <li>现有系统优化改造潜力（ROI）</li>
+                    <li>流程优化</li>
+                    <li>未充分利用的技术能力</li>
+                    <li>AI-IDE 等新工具应用</li>
+                    <li>团队技能提升空间</li>
+                    <li>资源配置优化</li>
+                </ul>
+            </div>
+
+            <div class="strategy-card card-4 fade-in">
+                <div class="card-icon">🌐</div>
+                <h2>外部趋势</h2>
+                <p>关注外部环境变化，把握行业发展机遇。</p>
+                <ul class="highlight-list">
+                    <li>新技术趋势</li>
+                    <li>行业最新实践</li>
+                    <li>竞品动态分析</li>
+                    <li>政策法规变化</li>
+                    <li>市场环境变化</li>
+                    <li>用户需求演进</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>© 2025 产研战略规划 | 持续优化，追求卓越</p>
+        </footer>
+    </div>
+
+    <script>
+        // 简单的滚动动画
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0.2s';
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.strategy-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
