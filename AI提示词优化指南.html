@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI提示词优化指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .phone-block {
+            aspect-ratio: 9/16;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .phone-block::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: #ddd;
+            border-radius: 2px;
+        }
+
+        .block-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin: 20px 0 25px 0;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #4facfe;
+        }
+
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #4facfe;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            background: #f0f8ff;
+            border-left-color: #ff6b6b;
+        }
+
+        .section-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::before {
+            margin-right: 8px;
+            font-size: 1.1em;
+        }
+
+        .block1 .section:nth-child(1) .section-title::before { content: '💡'; }
+        .block1 .section:nth-child(2) .section-title::before { content: '🎯'; }
+        .block1 .section:nth-child(3) .section-title::before { content: '⚡'; }
+        
+        .block2 .section:nth-child(1) .section-title::before { content: '📚'; }
+        .block2 .section:nth-child(2) .section-title::before { content: '🎓'; }
+        .block2 .section:nth-child(3) .section-title::before { content: '🔄'; }
+
+        .section-content {
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 12px 0;
+            border-left: 3px solid #ff6b6b;
+            font-size: 0.95em;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #555;
+            padding: 12px 15px;
+            background: #e8f4f8;
+            border-radius: 6px;
+            margin: 12px 0;
+            position: relative;
+            font-size: 0.95em;
+        }
+
+        .quote::before {
+            content: '"';
+            font-size: 2em;
+            color: #4facfe;
+            position: absolute;
+            top: -8px;
+            left: 8px;
+            font-family: serif;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 0.95em;
+        }
+
+        .tips-list li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            top: 8px;
+        }
+
+        .footer {
+            background: rgba(44, 62, 80, 0.95);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85em;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .phone-block {
+                aspect-ratio: 3/4;
+                padding: 20px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI提示词优化指南</h1>
+            <div class="subtitle">从指令执行到深度思考的进阶之路</div>
+        </div>
+        
+        <div class="content">
+            <div class="phone-block block1">
+                <div class="block-title">🎯 提示词基础策略</div>
+                
+                <div class="section">
+                    <div class="section-title">从 "指令执行者" 到 "思考伙伴"</div>
+                    <div class="section-content">
+                        先分享完整思路、背景材料或初稿，再用开放性问题引导深度思考。
+                        <div class="highlight">
+                            <strong>示例问题：</strong><br>
+                            "我的方案存在哪些认知盲区？"<br>
+                            "能否提供截然不同的分析视角？"
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">突破模型的 "友善壁垒"</div>
+                    <div class="section-content">
+                        <ul class="tips-list">
+                            <li>"请用最严苛的标准审视这份方案"</li>
+                            <li>"彻底推翻这个想法，指出所有致命漏洞"</li>
+                            <li>"无需鼓励，我需要最尖锐的批评"</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">添加 "深度思考" 指令前缀</div>
+                    <div class="section-content">
+                        在提问时加入引导词，提升回答质量：
+                        <div class="quote">
+                            请逐步拆解推理过程并详细说明
+                        </div>
+                        <div class="quote">
+                            回答前先进行系统性深度分析
+                        </div>
+                        <div class="quote">
+                            针对以下问题展开深度思考并输出详解
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phone-block block2">
+                <div class="block-title">🚀 高级优化技巧</div>
+                
+                <div class="section">
+                    <div class="section-title">用 "更多背景信息" 替代空泛提问</div>
+                    <div class="section-content">
+                        相比直接询问 "Anthropic 的产品策略"，提供内部文档、用户反馈等材料后，模型回答质量会显著提升。
+                        <div class="highlight">
+                            <strong>建议：</strong>在提问时附加项目文档、数据报告等背景信息，MCP 技术可实现多源上下文的结构化导入。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">让模型成为你的 "提示词教练"</div>
+                    <div class="section-content">
+                        <div class="quote">
+                            我需要完成 [任务 X]，请生成最优提示词模板并解释原理
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">从 "单次问答" 到 "共创闭环"</div>
+                    <div class="section-content">
+                        将任务拆解为循环优化流程：
+                        <div class="highlight">
+                            <strong>优化循环：</strong><br>
+                            提出思路 → 模型生成 → 人工验证 → 反馈优化 → 模型修正
+                        </div>
+                        <p>不要尝试一次性 QA 就完成任务，通过多轮迭代获得更好的结果。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2024 AI提示词优化指南 | 让AI成为更好的思考伙伴</p>
+        </div>
+    </div>
+</body>
+</html>
